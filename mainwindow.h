@@ -27,8 +27,6 @@ private:
 
     QGraphicsScene scene;
     int prev_diameter;
-
-    QPainterPath obsoleteRing(qreal dold, qreal dnew);
 };
 
 #endif // MAINWINDOW_H

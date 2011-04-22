@@ -50,14 +50,6 @@ void MainWindow::redrawScene()
     prev_diameter = diameter;
 }
 
-QPainterPath MainWindow::obsoleteRing(qreal dold, qreal dnew)
-{
-    QPainterPath path;
-    path.addRect(-dold/2, -dold/2, dold, dold);
-    path.addRect(-dnew/2, -dnew/2, dnew, dnew);
-    return path;
-}
-
 const int MainWindow::getDiameter()
 {
     int value = ui->spinDia->value();
