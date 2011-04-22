@@ -159,7 +159,7 @@
   </connection>
   <connection>
    <sender>spinLvl</sender>
-   <signal>editingFinished()</signal>
+   <signal>valueChanged(int)</signal>
    <receiver>pushGen</receiver>
    <slot>click()</slot>
    <hints>

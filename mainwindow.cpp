@@ -32,6 +32,14 @@ void MainWindow::redrawScene()
     int diameter = getDiameter();
     qreal radius = diameter/2;
 
+    // adjust spinbox maximum
+    if(level != -1 && ui->spinLvl->maximum() != diameter)
+        ui->spinLvl->setMaximum(diameter);
+
+    // level might be too high
+    if(level > diameter)
+        level = diameter - 1;
+
     int max = diameter < prev_diameter ? prev_diameter : diameter;
     for(int y = 0; y < max; ++y) {
         for(int x = 0; x < max; ++x) {
