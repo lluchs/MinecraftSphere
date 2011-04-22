@@ -14,8 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
 
     // setup connections
-    connect(ui->spinDia, SIGNAL(valueChanged(int)), SLOT(redrawScene()));
-    connect(ui->spinLvl, SIGNAL(valueChanged(int)), SLOT(redrawScene()));
+    connect(ui->pushGen, SIGNAL(clicked()), SLOT(redrawScene()));
 
     prev_diameter = getDiameter();
 }
@@ -61,7 +60,10 @@ QPainterPath MainWindow::obsoleteRing(qreal dold, qreal dnew)
 
 const int MainWindow::getDiameter()
 {
-    return ui->spinDia->value();
+    int value = ui->spinDia->value();
+    if(value % 2 == 0)
+        ui->spinDia->setValue(--value);
+    return value;
 }
 
 const int MainWindow::getLevel()

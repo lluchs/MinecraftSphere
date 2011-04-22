@@ -107,6 +107,13 @@
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QPushButton" name="pushGen">
+        <property name="text">
+         <string>Generate</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -133,5 +140,38 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>spinDia</sender>
+   <signal>editingFinished()</signal>
+   <receiver>pushGen</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>538</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>556</x>
+     <y>427</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinLvl</sender>
+   <signal>editingFinished()</signal>
+   <receiver>pushGen</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>542</x>
+     <y>433</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
