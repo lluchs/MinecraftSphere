@@ -35,14 +35,19 @@ void MainWindow::redrawScene()
             qreal px = x - max/2, py = y - max/2;
             QPointF point(px*12, py*12);
             QGraphicsItem *item = scene.itemAt(point);
+            if(item) {
+                scene.removeItem(item);
+                delete item;
+            }
             // point inside the circle?
             if(qSqrt(qPow(px, 2) + qPow(py, 2)) < radius + 0.5) {
-                if(!item)
-                    scene.addRect(point.x(), point.y(), 10, 10);
-            }
-            else {
-                if(item)
-                    delete item;
+                QColor color = Qt::white;
+                if(!px && !py)
+                    color = Qt::red;
+                else if(!px || !py)
+                    color = Qt::green;
+
+                scene.addRect(point.x(), point.y(), 10, 10, QPen(), QBrush(color));
             }
         }
     }
