@@ -63,6 +63,8 @@ void MainWindow::redrawScene()
         }
     }
 
+    scene.setSceneRect(-diameter*12/2, -diameter*12/2, diameter*12+10, diameter*12+10);
+
     prev_diameter = diameter;
 }
 
