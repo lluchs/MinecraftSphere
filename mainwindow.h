@@ -22,6 +22,9 @@ public:
 public slots:
     void redrawScene();
 
+    void on_radioSphere_clicked();
+    void on_radioCircle_clicked();
+
 private:
     Ui::MainWindow *ui;
 
