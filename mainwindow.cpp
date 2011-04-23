@@ -31,7 +31,7 @@ void MainWindow::redrawScene()
 {
     int level = ui->radioSphere->isChecked() ? getLevel() - 1 : -1;
     int diameter = getDiameter();
-    qreal radius = diameter/2;
+    int radius = diameter/2;
 
     // adjust spinbox maximum
     if(level != -1 && ui->spinLvl->maximum() != diameter)
@@ -44,7 +44,7 @@ void MainWindow::redrawScene()
     int max = diameter < prev_diameter ? prev_diameter : diameter;
     for(int y = 0; y < max; ++y) {
         for(int x = 0; x < max; ++x) {
-            qreal px = x - max/2, py = y - max/2, pz = level != -1 ? level - max/2 : 0;
+            int px = x - max/2, py = y - max/2, pz = level != -1 ? level - max/2 : 0;
             QPointF point = Block::getPoint(px, py);
             QGraphicsItem *item = scene.itemAt(point);
             if(item) {
@@ -60,7 +60,7 @@ void MainWindow::redrawScene()
                     color = Qt::green;
 
                 Block *block = new Block(px, py, color);
-                connect(block, SIGNAL(hover(qreal,qreal)), SLOT(blockHover(qreal,qreal)));
+                connect(block, SIGNAL(hover(int,int)), SLOT(blockHover(int,int)));
                 connect(block, SIGNAL(hoverEnd()), SLOT(blockHoverEnd()));
                 scene.addItem(block);
             }
@@ -72,7 +72,7 @@ void MainWindow::redrawScene()
     prev_diameter = diameter;
 }
 
-void MainWindow::blockHover(qreal x, qreal y)
+void MainWindow::blockHover(int x, int y)
 {
     ui->statusBar->showMessage(QString::number(x) + QLatin1String("/") + QString::number(y));
 }

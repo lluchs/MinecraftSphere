@@ -2,8 +2,8 @@
 
 #include <QBrush>
 
-Block::Block(qreal x, qreal y, QColor &color, QGraphicsItem *parent) :
-    QGraphicsRectItem(x*(length+padding), y*(length+padding), qreal(length), qreal(length), parent)
+Block::Block(int x, int y, QColor &color, QGraphicsItem *parent) :
+    QGraphicsRectItem(x*(length+padding), y*(length+padding), int(length), int(length), parent)
 {
     setBrush(QBrush(color));
     setAcceptHoverEvents(true);
@@ -22,7 +22,7 @@ void Block::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     emit hoverEnd();
 }
 
-const QPointF Block::getPoint(const qreal &x, const qreal &y)
+const QPointF Block::getPoint(const int &x, const int &y)
 {
     return QPointF(x*(length+padding), y*(length+padding));
 }

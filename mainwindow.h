@@ -22,7 +22,7 @@ public:
 public slots:
     void redrawScene();
 
-    void blockHover(qreal x, qreal y);
+    void blockHover(int x, int y);
     void blockHoverEnd();
 
     void on_radioSphere_clicked();
