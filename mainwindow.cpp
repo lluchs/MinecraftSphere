@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "block.h"
 
 #include <QtCore>
 #include <QGraphicsItem>
@@ -44,7 +45,7 @@ void MainWindow::redrawScene()
     for(int y = 0; y < max; ++y) {
         for(int x = 0; x < max; ++x) {
             qreal px = x - max/2, py = y - max/2, pz = level != -1 ? level - max/2 : 0;
-            QPointF point(px*12, py*12);
+            QPointF point = Block::getPoint(px, py);
             QGraphicsItem *item = scene.itemAt(point);
             if(item) {
                 scene.removeItem(item);
@@ -58,7 +59,7 @@ void MainWindow::redrawScene()
                 else if(!px || !py)
                     color = Qt::green;
 
-                scene.addRect(point.x(), point.y(), 10, 10, QPen(), QBrush(color));
+                scene.addItem(new Block(px, py, color));
             }
         }
     }
