@@ -9,7 +9,7 @@ class Block : public QObject, public QGraphicsRectItem
 public:
     explicit Block(int x, int y, QColor &color, QGraphicsItem *parent = 0);
 
-    static const QPointF getPoint(const int &x, const int &y);
+    static const QPoint getPoint(const int &x, const int &y);
 
     static const int length = 10;
     static const int padding = 2;
@@ -22,7 +22,7 @@ private:
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
-    QPointF pos;
+    QPoint pos;
 
 };
 

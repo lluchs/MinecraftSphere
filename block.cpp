@@ -22,7 +22,7 @@ void Block::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     emit hoverEnd();
 }
 
-const QPointF Block::getPoint(const int &x, const int &y)
+const QPoint Block::getPoint(const int &x, const int &y)
 {
-    return QPointF(x*(length+padding), y*(length+padding));
+    return QPoint(x*(length+padding), y*(length+padding));
 }

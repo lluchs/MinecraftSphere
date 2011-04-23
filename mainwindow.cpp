@@ -45,7 +45,7 @@ void MainWindow::redrawScene()
     for(int y = 0; y < max; ++y) {
         for(int x = 0; x < max; ++x) {
             int px = x - max/2, py = y - max/2, pz = level != -1 ? level - max/2 : 0;
-            QPointF point = Block::getPoint(px, py);
+            QPoint point = Block::getPoint(px, py);
             QGraphicsItem *item = scene.itemAt(point);
             if(item) {
                 scene.removeItem(item);
