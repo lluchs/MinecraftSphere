@@ -59,7 +59,10 @@ void MainWindow::redrawScene()
                 else if(!px || !py)
                     color = Qt::green;
 
-                scene.addItem(new Block(px, py, color));
+                Block *block = new Block(px, py, color);
+                connect(block, SIGNAL(hover(qreal,qreal)), SLOT(blockHover(qreal,qreal)));
+                connect(block, SIGNAL(hoverEnd()), SLOT(blockHoverEnd()));
+                scene.addItem(block);
             }
         }
     }
@@ -67,6 +70,16 @@ void MainWindow::redrawScene()
     scene.setSceneRect(-diameter*12/2, -diameter*12/2, diameter*12+10, diameter*12+10);
 
     prev_diameter = diameter;
+}
+
+void MainWindow::blockHover(qreal x, qreal y)
+{
+    ui->statusBar->showMessage(QString::number(x) + QLatin1String("/") + QString::number(y));
+}
+
+void MainWindow::blockHoverEnd()
+{
+    ui->statusBar->clearMessage();
 }
 
 void MainWindow::on_radioSphere_clicked()
